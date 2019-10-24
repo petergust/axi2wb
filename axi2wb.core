@@ -1,0 +1,32 @@
+CAPI=2:
+name : ::axi2wb:0
+
+filesets:
+   rtl:
+      files:
+        - rtl/axi2wb.v      
+      file_type : verilogSource
+
+targets:
+   default:
+      filesets :
+        - rtl
+
+   lint:
+      default_tool : verilator
+      filesets :
+        - rtl
+      tools:
+        verilator :
+           mode : lint-only
+      toplevel : axi2wb
+
+   synth:
+      default_tool : vivado
+      filesets :
+        - rtl
+      tools:
+        vivado:
+          part : xc7a100tcsg324-1
+      toplevel : axi2wb
+   
